@@ -10,6 +10,8 @@ const withPWA = require('next-pwa')({
   },
   cacheOnFrontEndNav: true,
   reloadOnOnline: true,
+  // Prevent PWA from generating Pages Router files
+  buildExcludes: [/app-build-manifest\.json$/],
   runtimeCaching: [
     {
       urlPattern: /^https:\/\/hackathon\.api\.qloo\.com\/.*/i,
@@ -64,6 +66,8 @@ const nextConfig = {
   experimental: {
     serverComponentsExternalPackages: ['mongoose', 'mongodb'],
   },
+  // Disable legacy pages directory
+  pageExtensions: ['tsx', 'ts'],
 };
 
 module.exports = withPWA(nextConfig);
