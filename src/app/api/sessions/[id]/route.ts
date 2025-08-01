@@ -5,6 +5,9 @@ import connectDB from '@/lib/mongodb'
 import ChatSession from '@/lib/models/ChatSession'
 import ActionPlan from '@/lib/models/ActionPlan'
 
+// Force dynamic rendering
+export const dynamic = 'force-dynamic'
+
 // GET specific session
 export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
   try {

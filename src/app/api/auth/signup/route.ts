@@ -4,6 +4,9 @@ import { connectToDatabase } from '@/lib/mongodb'
 import { validateInput, UserError } from '@/lib/error-handling'
 import { logger } from '@/lib/monitoring'
 
+// Force dynamic rendering
+export const dynamic = 'force-dynamic'
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()

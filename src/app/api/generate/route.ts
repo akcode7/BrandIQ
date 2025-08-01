@@ -2,6 +2,9 @@ import { NextRequest, NextResponse } from 'next/server'
 import geminiService from '@/lib/services/gemini'
 import qlooService from '@/lib/services/qloo'
 
+// Force dynamic rendering
+export const dynamic = 'force-dynamic'
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()

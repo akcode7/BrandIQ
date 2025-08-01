@@ -5,6 +5,9 @@ import connectDB from '@/lib/mongodb'
 import ActionPlan from '@/lib/models/ActionPlan'
 import ChatSession from '@/lib/models/ChatSession'
 
+// Force dynamic rendering
+export const dynamic = 'force-dynamic'
+
 // Type definitions for better TypeScript support
 interface ActionPlanStep {
   id: string
