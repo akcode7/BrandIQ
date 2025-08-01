@@ -57,6 +57,13 @@ const nextConfig = {
   env: {
     CUSTOM_KEY: process.env.CUSTOM_KEY,
   },
+  // Disable static export for PWA with dynamic features
+  output: 'standalone',
+  trailingSlash: false,
+  // Configure dynamic routes that need server-side rendering
+  experimental: {
+    serverComponentsExternalPackages: ['mongoose', 'mongodb'],
+  },
 };
 
 module.exports = withPWA(nextConfig);
