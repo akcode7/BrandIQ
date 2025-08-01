@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# Disallow admin and API routes
+Disallow: /api/
+Disallow: /admin/
+Disallow: /_next/
+Disallow: /auth/
+
+# Allow specific API routes that should be crawlable
+Allow: /api/og
+
+# Host
+Host: https://your-domain.com
+
+# Sitemaps
+Sitemap: https://your-domain.com/sitemap.xml

@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Icon Generator</title>
+</head>
+<body>
+    <h1>Generating PNG Icons...</h1>
+    <p>This page will generate PNG icons from SVG. Check your downloads folder.</p>
+    <script>
+        
+// PNG Icon Generator for browsers
+// This script converts SVG icons to PNG format using Canvas API
+
+function generatePNGIcon(size) {
+  const svg = `CiAgICA8c3ZnIHdpZHRoPSIxOTIiIGhlaWdodD0iMTkyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogICAgICA8ZGVmcz4KICAgICAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdyYWQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3R5bGU9InN0b3AtY29sb3I6IzYzNjZmMSIvPgogICAgICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdHlsZT0ic3RvcC1jb2xvcjojOGI1Y2Y2Ii8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgICAgPC9kZWZzPgogICAgICA8cmVjdCB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgcng9IjE5LjIwMDAwMDAwMDAwMDAwMyIgZmlsbD0idXJsKCNncmFkKSIvPgogICAgICA8Y2lyY2xlIGN4PSI1Ny41OTk5OTk5OTk5OTk5OTQiIGN5PSI1Ny41OTk5OTk5OTk5OTk5OTQiIHI9IjkuNjAwMDAwMDAwMDAwMDAxIiBmaWxsPSJ3aGl0ZSIgb3BhY2l0eT0iMC45Ii8+CiAgICAgIDxjaXJjbGUgY3g9IjEzNC4zOTk5OTk5OTk5OTk5OCIgY3k9IjU3LjU5OTk5OTk5OTk5OTk5NCIgcj0iOS42MDAwMDAwMDAwMDAwMDEiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjkiLz4KICAgICAgPGNpcmNsZSBjeD0iOTYiIGN5PSIxMzQuMzk5OTk5OTk5OTk5OTgiIHI9IjkuNjAwMDAwMDAwMDAwMDAxIiBmaWxsPSJ3aGl0ZSIgb3BhY2l0eT0iMC45Ii8+CiAgICAgIDxsaW5lIHgxPSI1Ny41OTk5OTk5OTk5OTk5OTQiIHkxPSI1Ny41OTk5OTk5OTk5OTk5OTQiIHgyPSIxMzQuMzk5OTk5OTk5OTk5OTgiIHkyPSI1Ny41OTk5OTk5OTk5OTk5OTQiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMS45MiIgb3BhY2l0eT0iMC43Ii8+CiAgICAgIDxsaW5lIHgxPSIxMzQuMzk5OTk5OTk5OTk5OTgiIHkxPSI1Ny41OTk5OTk5OTk5OTk5OTQiIHgyPSI5NiIgeTI9IjEzNC4zOTk5OTk5OTk5OTk5OCIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxLjkyIiBvcGFjaXR5PSIwLjciLz4KICAgICAgPGxpbmUgeDE9IjU3LjU5OTk5OTk5OTk5OTk5NCIgeTE9IjU3LjU5OTk5OTk5OTk5OTk5NCIgeDI9Ijk2IiB5Mj0iMTM0LjM5OTk5OTk5OTk5OTk4IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjEuOTIiIG9wYWNpdHk9IjAuNyIvPgogICAgPC9zdmc+CiAg`;
+  const svgBlob = new Blob([atob(svg)], {type: 'image/svg+xml'});
+  const url = URL.createObjectURL(svgBlob);
+  
+  const img = new Image();
+  img.onload = function() {
+    const canvas = document.createElement('canvas');
+    canvas.width = size;
+    canvas.height = size;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0, size, size);
+    
+    canvas.toBlob(function(blob) {
+      const link = document.createElement('a');
+      link.download = `icon-${size}.png`;
+      link.href = URL.createObjectURL(blob);
+      link.click();
+      URL.revokeObjectURL(link.href);
+    }, 'image/png');
+    
+    URL.revokeObjectURL(url);
+  };
+  img.src = url;
+}
+
+// Generate all PNG sizes
+generatePNGIcon(72);
+generatePNGIcon(96);
+generatePNGIcon(128);
+generatePNGIcon(144);
+generatePNGIcon(152);
+generatePNGIcon(192);
+generatePNGIcon(384);
+generatePNGIcon(512);
+
+    </script>
+</body>
+</html>
